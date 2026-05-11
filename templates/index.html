@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section text-center">
+    <h1 class="display-4 fw-bold">📚 Smart Book Library Management System</h1>
+
+    <p class="lead mt-3">
+        A Flask-based web application for managing books, users, borrowing records,
+        and book recommendations.
+    </p>
+
+    <div class="mt-4">
+        {% if session.get('user_id') %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg">Go to Dashboard</a>
+        {% else %}
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg me-2">Get Started</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-dark btn-lg">Login</a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="row text-center mb-5">
+    <div class="col-md-4 mb-3">
+        <div class="card p-4 shadow-sm">
+            <h3>Book Management</h3>
+            <p>Add, search, delete, borrow, and return books.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card p-4 shadow-sm">
+            <h3>User System</h3>
+            <p>Register, log in, and manage personal borrowed books.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card p-4 shadow-sm">
+            <h3>Recommendations</h3>
+            <p>Get book recommendations using TF-IDF text similarity.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

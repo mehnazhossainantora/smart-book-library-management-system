@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mt-4 mb-4">Book Recommendations</h2>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5>Select a book to get similar recommendations</h5>
+
+    <form method="GET">
+        <div class="row">
+            <div class="col-md-10">
+                <select name="book_id" class="form-select" required>
+                    <option value="">Choose a book</option>
+
+                    {% for book in books %}
+                        <option
+                            value="{{ book.id }}"
+                            {% if selected_book_id == book.id %}selected{% endif %}
+                        >
+                            {{ book.title }} by {{ book.author }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-dark w-100">Recommend</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% if recommended_books %}
+    <h4>Recommended Books</h4>
+
+    <div class="row mt-3">
+        {% for book in recommended_books %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm p-3">
+                    <h4>{{ book.title }}</h4>
+                    <p class="mb-1"><strong>Author:</strong> {{ book.author }}</p>
+                    <p class="mb-1"><strong>Genre:</strong> {{ book.genre }}</p>
+                    <p class="mt-2">{{ book.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% elif selected_book_id %}
+    <div class="alert alert-warning">
+        No recommendations found.
+    </div>
+{% endif %}
+{% endblock %}

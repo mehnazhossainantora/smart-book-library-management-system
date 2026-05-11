@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mt-4 mb-4">My Borrowed Books</h2>
+
+{% if borrowed_books %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover bg-white">
+            <thead class="table-dark">
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Borrowed At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in borrowed_books %}
+                    <tr>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.author }}</td>
+                        <td>{{ item.genre }}</td>
+                        <td>{{ item.borrowed_at }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('return_book', borrow_id=item.borrow_id) }}">
+                                <button type="submit" class="btn btn-sm btn-warning">
+                                    Return
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        You have not borrowed any books yet.
+    </div>
+{% endif %}
+{% endblock %}

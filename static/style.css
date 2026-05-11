@@ -1,0 +1,42 @@
+body {
+    background-color: #f7f9fc;
+}
+
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section {
+    padding: 80px 0;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+}
+
+.stat-card {
+    border-radius: 15px;
+    color: white;
+}
+
+.footer {
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #212529;
+    color: white;
+    text-align: center;
+}
+
+.book-card {
+    min-height: 100%;
+}
+
+.badge-custom {
+    font-size: 0.85rem;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}

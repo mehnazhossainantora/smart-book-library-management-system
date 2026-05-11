@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mt-4 mb-4">Welcome, {{ session.get('user_name') }} 👋</h2>
+
+<div class="row">
+    <div class="col-md-3 mb-3">
+        <div class="card stat-card bg-primary p-4 shadow-sm">
+            <h5>Total Book Titles</h5>
+            <h2>{{ total_books }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card stat-card bg-success p-4 shadow-sm">
+            <h5>Available Copies</h5>
+            <h2>{{ available_books }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card stat-card bg-warning p-4 shadow-sm">
+            <h5>Borrowed Books</h5>
+            <h2>{{ borrowed_books }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card stat-card bg-dark p-4 shadow-sm">
+            <h5>Registered Users</h5>
+            <h2>{{ total_users }}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm p-4 mt-4">
+    <h4>Quick Actions</h4>
+
+    <div class="mt-3">
+        <a href="{{ url_for('books') }}" class="btn btn-primary me-2">View Books</a>
+        <a href="{{ url_for('add_book') }}" class="btn btn-success me-2">Add Book</a>
+        <a href="{{ url_for('borrowed_books') }}" class="btn btn-warning me-2">My Borrowed Books</a>
+        <a href="{{ url_for('recommendations') }}" class="btn btn-dark">Get Recommendations</a>
+    </div>
+</div>
+{% endblock %}
